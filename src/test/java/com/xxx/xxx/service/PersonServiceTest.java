@@ -38,16 +38,12 @@ public class PersonServiceTest {
     }
 
     @Test
-    public void should_find_person_when_name_is_james() {
+    public void should_find_person_when_name_is_james() throws Exception {
         //given
         String name = "James";
         PersonRequest request = new PersonRequest(name);
         PowerMockito.mockStatic(TimeUnit.class);
-        try {
-            doNothing().when(TimeUnit.class, "sleep", anyLong());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        doNothing().when(TimeUnit.class, "sleep", anyLong());
         //when
         Person result = personService.find(request);
         //then
